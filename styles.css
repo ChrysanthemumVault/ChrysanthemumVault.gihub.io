@@ -1,1 +1,229 @@
+:root {
+    --gold: #D4AF37;
+    --dark-gold: #B8942F;
+    --text-light: #CCCCCC;
+    --white: #FFFFFF;
+    --black: #1A1A1A;
+    --shadow: 0 4px 20px rgba(212, 175, 55, 0.2);
+}
 
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Inter', sans-serif;
+    background-color: var(--black);
+    color: var(--gold);
+    line-height: 1.6;
+    overflow-x: hidden;
+}
+
+header {
+    position: fixed;
+    top: 0;
+    width: 100%;
+    background: rgba(26, 26, 26, 0.95);
+    backdrop-filter: blur(10px);
+    z-index: 1000;
+    padding: 1rem 0;
+    border-bottom: 1px solid var(--gold);
+}
+
+nav {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 2rem;
+}
+
+.logo {
+    font-size: 1.5rem;
+    font-weight: 600;
+    color: var(--gold);
+    text-decoration: none;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.logo::before {
+    content: '🌸🔑';
+    font-size: 1.2rem;
+}
+
+.nav-links {
+    display: flex;
+    list-style: none;
+    gap: 2rem;
+    margin-left: auto;
+}
+
+.nav-links a {
+    text-decoration: none;
+    color: var(--gold);
+    font-weight: 400;
+    transition: color 0.3s ease;
+}
+
+.nav-links a:hover {
+    color: var(--dark-gold);
+}
+
+main {
+    margin-top: 80px;
+    min-height: 100vh;
+}
+
+.hero {
+    text-align: center;
+    padding: 4rem 2rem;
+    background: var(--black);
+}
+
+.hero h1 {
+    font-size: 3rem;
+    font-weight: 300;
+    color: var(--gold);
+    margin-bottom: 1rem;
+    letter-spacing: -0.02em;
+}
+
+.animated-text {
+    animation: fadeIn 2s ease-in-out;
+}
+
+@keyframes fadeIn {
+    0% { opacity: 0; transform: translateY(20px); }
+    100% { opacity: 1; transform: translateY(0); }
+}
+
+.ticker-tape {
+    overflow: hidden;
+    white-space: nowrap;
+    margin: 1rem 0; /* Adjusts spacing below the title */
+    height: 2rem;
+}
+
+.ticker-tape span {
+    display: inline-block;
+    font-size: 1.1rem;
+    color: var(--gold);
+    padding-left: 100%;
+    animation: ticker 15s linear infinite;
+}
+
+@keyframes ticker {
+    0% { transform: translateX(0); }
+    100% { transform: translateX(-100%); }
+}
+
+.hero p {
+    font-size: 1.2rem;
+    color: var(--text-light);
+    max-width: 600px;
+    margin: 0 auto;
+}
+
+.section {
+    padding: 4rem 2rem;
+    max-width: 1200px;
+    margin: 0 auto;
+    background: var(--black);
+}
+
+.section h2 {
+    font-size: 2.5rem;
+    font-weight: 300;
+    text-align: center;
+    margin-bottom: 3rem;
+    color: var(--gold);
+    position: relative;
+}
+
+.section h2::after {
+    content: '';
+    display: block;
+    width: 60px;
+    height: 2px;
+    background: var(--gold);
+    margin: 1rem auto 0;
+}
+
+.projects-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 2rem;
+}
+
+.project-card {
+    background: #2A2A2A;
+    border-radius: 12px;
+    padding: 2rem;
+    box-shadow: var(--shadow);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    border: 1px solid rgba(212, 175, 55, 0.1);
+}
+
+.project-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 30px rgba(212, 175, 55, 0.15);
+}
+
+.project-card h3 {
+    font-size: 1.5rem;
+    font-weight: 500;
+    margin-bottom: 0.5rem;
+    color: var(--gold);
+}
+
+.project-card p {
+    color: var(--text-light);
+    margin-bottom: 1rem;
+}
+
+.project-link {
+    display: inline-block;
+    color: var(--gold);
+    text-decoration: none;
+    font-weight: 500;
+    transition: color 0.3s ease;
+}
+
+.project-link:hover {
+    color: var(--dark-gold);
+}
+
+footer {
+    background: var(--black);
+    color: var(--gold);
+    text-align: center;
+    padding: 2rem;
+    margin-top: auto;
+}
+
+@media (max-width: 768px) {
+    .nav-links {
+        display: none;
+    }
+
+    .hero h1 {
+        font-size: 2rem;
+    }
+
+    .section {
+        padding: 2rem 1rem;
+    }
+
+    .ticker-tape {
+        height: 1.5rem;
+    }
+
+    .ticker-tape span {
+        font-size: 0.9rem;
+    }
+}
