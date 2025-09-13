@@ -1,0 +1,33 @@
+:root{
+  --bg:#faf6ee;
+  --text:#1a1a1a;
+  --muted:#555;
+  --gold:#c9a227;
+}
+*{box-sizing:border-box}
+html,body{margin:0;padding:0;background:var(--bg);color:var(--text);font-family:Inter, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, "Apple Color Emoji","Segoe UI Emoji",sans-serif}
+h1,h2,h3{font-family: Georgia, 'Times New Roman', Times, serif; letter-spacing: .02em; color: var(--text)}
+a{color:var(--text);text-decoration:none;border-bottom:1px solid rgba(0,0,0,.12)}
+a:hover{border-color:var(--gold)}
+.container{max-width:1080px;margin:0 auto;padding:24px}
+.header{display:flex;align-items:center;gap:16px;padding-top:8px}
+.logo{display:flex;align-items:center;gap:12px}
+.logo-badge{width:44px;height:44px;border:2px solid var(--gold);border-radius:50%;display:grid;place-items:center;color:var(--gold);font-weight:700;font-family:Georgia,serif}
+.tagline{color:var(--muted);margin-top:4px}
+.hero{padding:48px 0 16px;border-bottom:1px solid rgba(0,0,0,.1)}
+.hero h1{font-size:42px;margin:0}
+.hero p{font-size:18px;color:var(--muted);max-width:60ch}
+.cta{margin-top:16px;display:flex;gap:12px;flex-wrap:wrap}
+.btn{padding:10px 16px;border:1px solid var(--gold);color:var(--text);border-radius:8px;background:linear-gradient(180deg,#fff, #f6efe0);}
+.btn:hover{transform:translateY(-1px);box-shadow:0 6px 16px rgba(0,0,0,.08)}
+.section{padding:40px 0}
+.grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
+.card{background:white;border:1px solid rgba(0,0,0,.08);border-radius:12px;overflow:hidden}
+.card .ph{height:180px;background:linear-gradient(135deg, #f2ead9, #fff)}
+.card .meta{padding:12px 14px}
+.kicker{font-size:12px;letter-spacing:.18em;text-transform:uppercase;color:var(--gold);font-weight:700}
+.footer{padding:32px 0 64px;border-top:1px solid rgba(0,0,0,.1);color:var(--muted);font-size:14px}
+.badge{display:inline-block;border:1px solid var(--gold);color:var(--gold);padding:2px 8px;border-radius:999px;font-size:12px;margin-left:8px}
+hr{border:none;border-top:1px solid rgba(0,0,0,.1);margin:28px 0}
+@media (max-width:800px){.grid{grid-template-columns:1fr 1fr}}
+@media (max-width:520px){.grid{grid-template-columns:1fr}}
