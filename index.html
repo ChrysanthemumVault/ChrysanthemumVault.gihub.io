@@ -1,73 +1,225 @@
-<!DOCTYPE html>
+I have no idea now, you're suppose to be the perfect coder, what i'm coding is <!doctype html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Chrysanthemum Vault - GitHub Repository Vault</title>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="css/style.css">
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width,initial-scale=1" />
+<title>Chrysanthemum Vault — Paintings · Relics · Jewelry · Oddities · Workshops</title>
+<meta name="description" content="Chrysanthemum Vault — a studio-gallery for original paintings, relics, fine curios, jewelry, and workshops.">
+<style>
+:root{
+  --bg:#0f0f0f; --ink:#e8e5dd; --muted:#a99f8a; --accent:#d1b23d; --line:#252525;
+  --sans: Inter, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, "Apple Color Emoji","Segoe UI Emoji",sans-serif;
+  --serif: "Times New Roman", Georgia, serif; --pad: 20px; --max: 1200px;
+}
+*{box-sizing:border-box}
+html,body{margin:0;padding:0;background:var(--bg);color:var(--ink);font-family:var(--sans)}
+a{color:inherit;text-decoration:none;border-bottom:1px solid transparent}
+a:hover{border-color:var(--accent)}
+img{max-width:100%;display:block}
+
+.frame{max-width:var(--max);margin:0 auto;padding:var(--pad)}
+.wrap{display:grid;grid-template-columns:1.2fr .8fr;gap:var(--pad)}
+@media (max-width:980px){ .wrap{grid-template-columns:1fr} }
+
+.header{
+  border-bottom:1px solid var(--line); padding:var(--pad) 0;
+  position:sticky; top:0; backdrop-filter:saturate(150%) blur(6px);
+  background:linear-gradient(180deg, rgba(15,15,15,.85), rgba(15,15,15,.6) 60%, transparent)
+}
+.brand{ display:grid; grid-template-columns:auto 1fr; align-items:center; gap:14px; }
+.badge{
+  width:56px;height:56px;border-radius:50%;
+  border:2px solid var(--accent); display:grid; place-items:center;
+  font-family:var(--serif); letter-spacing:.04em; color:var(--accent);
+}
+.title{ line-height:1; font-weight:800; font-size:clamp(24px,3.2vw,34px); }
+.title .thin{font-weight:300; color:var(--muted); letter-spacing:.08em}
+.nav{margin-top:8px; display:flex; gap:18px; flex-wrap:wrap; font-size:.95rem; color:var(--muted)}
+.nav a{border-bottom:none}
+.nav a:hover{color:var(--accent)}
+
+.hero{ display:grid; grid-template-columns:1.2fr .8fr; gap:var(--pad); padding:40px 0 8px 0; }
+@media (max-width:980px){ .hero{grid-template-columns:1fr} }
+.tag{ color:var(--accent); font-weight:800; letter-spacing:.22em; font-size:.8rem; }
+.hero h1{
+  font-family:var(--serif); font-size: clamp(42px, 7.2vw, 94px);
+  line-height:.88; margin:.35em 0 .2em 0; letter-spacing:.01em;
+}
+.cutline{ max-width:60ch; color:var(--muted); font-size:1.05rem; line-height:1.5; }
+.hero-card{
+  border:1px solid var(--line); border-radius:18px; overflow:hidden;
+  background:
+    radial-gradient(1200px 200px at 10% 0%, rgba(209,178,61,.10), transparent 60%),
+    linear-gradient(180deg, rgba(255,255,255,.025), rgba(0,0,0,.03));
+}
+.hero-card .ph{
+  height:260px; background:conic-gradient(from 70deg at 60% 40%, #222, #2a2a2a, #191919, #232323, #222);
+  border-bottom:1px solid var(--line);
+}
+.hero-card .meta{padding:16px}
+.hero-card .meta .kicker{color:var(--accent); letter-spacing:.2em; font-weight:800; font-size:.75rem}
+.hero-card .meta p{color:var(--muted); margin:.4rem 0 0 0}
+
+.strip{
+  margin:20px 0; border-top:1px solid var(--line); border-bottom:1px solid var(--line);
+  overflow:hidden; white-space:nowrap; position:relative;
+}
+.marquee{
+  display:inline-block; padding:14px 0; animation: slide 22s linear infinite;
+  letter-spacing:.18em; color:var(--muted);
+}
+.marquee b{color:var(--ink); font-weight:700}
+@keyframes slide{ 0%{transform:translateX(0)} 100%{transform:translateX(-50%)} }
+
+.mosaic{ display:grid; grid-template-columns: 1.1fr .9fr 1fr; gap:var(--pad); }
+@media (max-width:1100px){ .mosaic{grid-template-columns:1fr 1fr} }
+@media (max-width:640px){ .mosaic{grid-template-columns:1fr} }
+.tile{
+  border:1px solid var(--line); border-radius:16px; overflow:hidden;
+  background:linear-gradient(160deg, rgba(255,255,255,.03), rgba(0,0,0,.04));
+}
+.tile .ph{height:260px; background:linear-gradient(135deg, #1b1b1b, #262626)}
+.tile.tall .ph{height:420px}
+.tile .meta{padding:12px 14px}
+.meta .name{font-weight:700}
+.meta .info{color:var(--muted); font-size:.95rem}
+
+.manifesto{
+  display:grid; grid-template-columns:.65fr 1.35fr; gap:var(--pad); align-items:start; margin-top:28px;
+}
+@media (max-width:980px){ .manifesto{grid-template-columns:1fr} }
+.manifesto .side{ border-left:6px solid var(--accent); padding-left:14px; color:var(--muted); }
+.manifesto h2{font-family:var(--serif); font-size:clamp(26px,3.2vw,38px); margin:.1em 0 .4em 0}
+.manifesto p{max-width:65ch; line-height:1.6}
+
+.footer{border-top:1px solid var(--line); margin-top:40px; padding:20px 0 60px 0; color:var(--muted); font-size:.95rem}
+.badge{display:inline-block; border:1px solid var(--accent); color:var(--accent); padding:2px 8px; border-radius:999px; font-size:.75rem; margin-left:8px}
+
+.buttons{display:flex; gap:10px; flex-wrap:wrap; margin:.8rem 0 0 0}
+.btn{
+  display:inline-block; padding:10px 14px; border-radius:999px;
+  border:1px solid var(--accent); color:var(--ink);
+  background:linear-gradient(180deg, rgba(209,178,61,.12), rgba(209,178,61,.04));
+  font-weight:700; letter-spacing:.03em; border-bottom:none;
+}
+.btn:hover{transform:translateY(-1px)}
+</style>
 </head>
 <body>
-    <header>
-        <nav>
-            <a href="#" class="logo">Chrysanthemum Vault</a>
-            <ul class="nav-links">
-                <li><a href="#home">Home</a></li>
-                <li><a href="#projects">Projects</a></li>
-                <li><a href="#about">About</a></li>
-                <li><a href="#contact">Contact</a></li>
-            </ul>
+
+  <header class="frame header" role="banner" aria-label="Site Header">
+    <div class="brand" aria-label="Brand">
+      <div class="badge" aria-hidden="true">CV</div>
+      <div>
+        <div class="title">Chrysanthemum <span class="thin">Vault</span></div>
+        <nav class="nav" aria-label="Primary">
+          <a href="#works">Works</a>
+          <a href="#manifesto">Manifesto</a>
+          <a href="#contact">Inquiries</a>
+          <a href="mailto:hello@yourdomain.com" aria-label="Email">Email</a>
         </nav>
-    </header>
+      </div>
+    </div>
+  </header>
 
-    <main>
-        <section id="home" class="hero">
-            <h1 class="animated-text">Vault of the Chrysanthemum</h1>
-            <p>Discover elegant code repositories and innovative projects securely stored in this vault. Built for GitHub enthusiasts seeking minimalist sophistication.</p>
-        </section>
+  <main class="frame" role="main">
+    <section class="hero" aria-label="Intro">
+      <div>
+        <div class="tag">PAINTINGS · RELICS · JEWELRY · ODDITIES · WORKSHOPS</div>
+        <h1>Artifacts for the<br>Age of After-Images</h1>
+        <p class="cutline">
+          A studio-gallery presenting original paintings, relic-objects, and small-batch jewelry.
+          Each piece is crafted to stand alone, yet hums with the larger worlds that inspired it.
+        </p>
+        <div class="buttons">
+          <a class="btn" href="#works">Enter the Vault</a>
+          <a class="btn" href="#contact">Commission / Inquiry</a>
+        </div>
+      </div>
 
-        <section id="projects" class="section">
-            <h2>Featured Projects</h2>
-            <div class="projects-grid">
-                <div class="project-card">
-                    <h3>Project Alpha</h3>
-                    <p>A minimalist web app for task management with unique influences.</p>
-                    <a href="https://github.com/yourusername/project-alpha" class="project-link" target="_blank">View on GitHub →</a>
-                </div>
-                <div class="project-card">
-                    <h3>Project Beta</h3>
-                    <p>Secure vault encryption tool with flowing designs.</p>
-                    <a href="https://github.com/yourusername/project-beta" class="project-link" target="_blank">View on GitHub →</a>
-                </div>
-                <div class="project-card">
-                    <h3>Project Gamma</h3>
-                    <p>Elegant data visualization library with precision.</p>
-                    <a href="https://github.com/yourusername/project-gamma" class="project-link" target="_blank">View on GitHub →</a>
-                </div>
-            </div>
-        </section>
+      <aside class="hero-card" aria-label="Featured">
+        <div class="ph" aria-hidden="true"></div>
+        <div class="meta">
+          <div class="kicker">FEATURED</div>
+          <p>Rotating selections: paintings on panel, cast relics, and one-off curios.</p>
+        </div>
+      </aside>
+    </section>
 
-        <section id="about" class="section">
-            <h2>About the Vault</h2>
-            <p style="text-align: center; max-width: 800px; margin: 0 auto; font-size: 1.1rem; color: #D4AF37;">
-                Chrysanthemum Vault is a personal GitHub showcase domain, blending elegance with modern design. Hosted under chrysanthemumvault.com, it serves as a secure portal to curated repositories.
-            </p>
-        </section>
-    </main>
+    <div class="strip" aria-hidden="true">
+      <div class="marquee">
+        — PAINTINGS — <b>RELICS</b> — JEWELRY — ODDITIES — WORKSHOPS — ARCHIVAL PRINTS —
+        PAINTINGS — <b>RELICS</b> — JEWELRY — ODDITIES — WORKSHOPS — ARCHIVAL PRINTS —
+      </div>
+      <div class="marquee" aria-hidden="true">
+        — PAINTINGS — <b>RELICS</b> — JEWELRY — ODDITIES — WORKSHOPS — ARCHIVAL PRINTS —
+        PAINTINGS — <b>RELICS</b> — JEWELRY — ODDITIES — WORKSHOPS — ARCHIVAL PRINTS —
+      </div>
+    </div>
 
-    <footer id="contact">
-        <p>&copy; 2025 Chrysanthemum Vault. All rights reserved. | <a href="mailto:contact@chrysanthemumvault.com" style="color: #D4AF37;">contact@chrysanthemumvault.com</a></p>
-    </footer>
+    <section id="works" class="wrap" aria-label="Selected Works">
+      <div class="mosaic">
+        <article class="tile tall"><div class="ph"></div><div class="meta"><div class="name">Chrysanthemum No. 7</div><div class="info">Acrylic on panel · 24×36</div></div></article>
+        <article class="tile"><div class="ph"></div><div class="meta"><div class="name">Relic: GateRing Fragment</div><div class="info">Cast alloy, patina · 4″</div></div></article>
+        <article class="tile"><div class="ph"></div><div class="meta"><div class="name">Curio Pendant</div><div class="info">Stone, brass, silver · 1.2″</div></div></article>
+        <article class="tile"><div class="ph"></div><div class="meta"><div class="name">Atlas of Sadeness</div><div class="info">Mixed media · 12×12</div></div></article>
+        <article class="tile"><div class="ph"></div><div class="meta"><div class="name">Specimen: Hyphal Node</div><div class="info">Resin, pigment · 3″</div></div></article>
+        <article class="tile tall"><div class="ph"></div><div class="meta"><div class="name">Imperium Study</div><div class="info">Ink on paper · 18×24</div></div></article>
+      </div>
 
-    <script>
-        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-            anchor.addEventListener('click', function (e) {
-                e.preventDefault();
-                document.querySelector(this.getAttribute('href')).scrollIntoView({
-                    behavior: 'smooth'
-                });
-            });
-        });
-    </script>
+      <aside>
+        <p class="tag">EDITION / ORIGINAL</p>
+        <h2 style="font-family:var(--serif); font-size:clamp(28px,3.2vw,40px); line-height:1.1; margin:.2em 0;">
+          One-of-a-kind works with the rigor of an archive.
+        </h2>
+        <p style="color:var(--muted); max-width:50ch;">
+          The Vault catalogs pieces by material, provenance, and process notes.
+          Originals are accompanied by a concise record, with optional bespoke housing.
+        </p>
+        <div class="buttons">
+          <a class="btn" href="#contact">Availability</a>
+          <a class="btn" href="#">Catalog (PDF)</a>
+        </div>
+      </aside>
+    </section>
+
+    <section id="manifesto" class="manifesto" aria-label="Manifesto">
+      <div class="side">
+        <div class="tag">ETHOS</div>
+        <h2>A Cabinet of Wonders—built for the present tense.</h2>
+      </div>
+      <div>
+        <p>
+          Chrysanthemum Vault is a studio and a ledger. Paintings, relics, and curios are fabricated with
+          archival attention and meant to be handled, worn, or displayed in living spaces—not vitrines alone.
+          Works carry the quiet gravity of discovered artifacts while remaining decisively contemporary.
+        </p>
+        <p>
+          Commissions are welcomed when they serve the piece. Teaching and workshops are offered in drawing,
+          surface, and small-object construction. Inquiries are answered personally.
+        </p>
+      </div>
+    </section>
+
+    <section id="contact" class="footer" aria-label="Contact & Footer">
+      <div class="wrap" style="display:grid; grid-template-columns:1fr .9fr; gap:var(--pad);">
+        <div>
+          <div class="tag">INQUIRIES</div>
+          <p>
+            Email: <a href="mailto:hello@yourdomain.com">hello@yourdomain.com</a>
+            <span class="badge">Serious inquiries only</span>
+          </p>
+          <p>
+            Instagram: <a href="https://instagram.com/yourhandle" target="_blank" rel="noopener">@yourhandle</a>
+          </p>
+        </div>
+        <div>
+          <div class="tag">NOTES</div>
+          <p>© 2025 Chrysanthemum Vault. All works © their creator. Archival records available upon request.</p>
+        </div>
+      </div>
+    </section>
+  </main>
+
 </body>
 </html>
