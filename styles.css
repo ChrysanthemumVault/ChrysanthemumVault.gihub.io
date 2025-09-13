@@ -31,3 +31,21 @@ a:hover{border-color:var(--gold)}
 hr{border:none;border-top:1px solid rgba(0,0,0,.1);margin:28px 0}
 @media (max-width:800px){.grid{grid-template-columns:1fr 1fr}}
 @media (max-width:520px){.grid{grid-template-columns:1fr}}
+/* === Fix header layout === */
+.header {
+  display: block;              /* stack title and tagline vertically */
+  text-align: center;          /* center them on the page */
+  padding-top: 8px;
+}
+
+.site-title {
+  font-size: 1.8rem;           /* make the main title a little bigger */
+  line-height: 1.2;
+  margin: 0;
+}
+
+.site-tagline {
+  margin-top: 4px;             /* add space between title and tagline */
+  font-size: 1rem;
+  color: var(--muted);         /* use your muted gray */
+}
