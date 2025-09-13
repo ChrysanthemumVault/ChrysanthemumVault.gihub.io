@@ -1,267 +1,232 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Chrysanthemum Vault - GitHub Repository Vault</title>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
-    <style>
-        :root {
-            --cream: #FFF8E7;
-            --gold: #D4AF37;
-            --dark-gold: #B8942F;
-            --text-dark: #333333;
-            --text-light: #666666;
-            --white: #FFFFFF;
-            --shadow: 0 4px 20px rgba(212, 175, 55, 0.1);
-        }
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Chrysanthemum Vault</title>
+  <meta name="description" content="A minimalist, Art Nouveau–meets–Deco showcase for repositories and artworks." />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet" />
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Ctext y='48' x='6' font-size='48'%3E%F0%9F%8C%B8%3C/text%3E%3C/svg%3E" />
+  <meta property="og:title" content="Chrysanthemum Vault" />
+  <meta property="og:description" content="Elegant code & curated projects." />
+  <meta property="og:type" content="website" />
+  <meta name="theme-color" content="#D4AF37" />
+  <style>
+    :root {
+      --bg: #FFF8E7;
+      --ink: #1c1c1c;
+      --muted: #6a6a6a;
+      --gold: #D4AF37;
+      --gold-deep: #b8942f;
+      --card: #ffffff;
+      --ring: rgba(212,175,55,.25);
+      --shadow: 0 12px 50px rgba(212,175,55,.18);
+    }
+    @media (prefers-color-scheme: dark) {
+      :root {
+        --bg: #0f0e0b;
+        --ink: #f5f0e6;
+        --muted: #bdb6a6;
+        --card: #16130e;
+        --ring: rgba(212,175,55,.35);
+      }
+    }
+    * { box-sizing: border-box; }
+    html, body { margin: 0; padding: 0; height: 100%; }
+    body { font-family: Inter, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, sans-serif; background: var(--bg); color: var(--ink); line-height: 1.6; }
 
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
+    /* HEADER */
+    header { position: sticky; top: 0; z-index: 50; backdrop-filter: blur(10px); background: color-mix(in oklab, var(--bg) 85%, white 15%); border-bottom: 1px solid color-mix(in oklab, var(--gold) 25%, transparent); }
+    .nav { max-width: 1120px; margin: 0 auto; display: grid; grid-template-columns: 1fr auto 1fr; align-items: center; padding: 10px 20px; }
+    .brand { justify-self: start; display: inline-flex; gap: .6rem; align-items: center; text-decoration: none; color: var(--ink); font-weight: 600; letter-spacing: .02em; }
+    .brand .mark { font-size: 1.2rem; }
+    .brand .word { color: var(--gold); }
+    .links { display: flex; gap: 1.2rem; justify-self: center; }
+    .links a { text-decoration: none; color: var(--ink); opacity: .9; border-bottom: 1px solid transparent; padding-bottom: 2px; }
+    .links a:hover { border-color: var(--gold); }
+    .actions { justify-self: end; display: flex; align-items: center; gap: .8rem; }
+    .btn { border: 1px solid var(--gold); color: var(--ink); background: transparent; padding: .5rem .8rem; border-radius: 999px; cursor: pointer; transition: transform .15s ease, background .2s ease; }
+    .btn:hover { transform: translateY(-1px); background: color-mix(in oklab, var(--gold) 12%, transparent); }
 
-        body {
-            font-family: 'Inter', sans-serif;
-            background-color: var(--cream);
-            color: var(--text-dark);
-            line-height: 1.6;
-            overflow-x: hidden;
-        }
+    /* HERO */
+    .hero { position: relative; isolation: isolate; display: grid; place-items: center; text-align: center; padding: 100px 20px 60px; }
+    .hero::before { content: ""; position: absolute; inset: -20% -10% auto -10%; height: 420px; background: radial-gradient(60% 60% at 50% 40%, color-mix(in oklab, var(--gold) 18%, transparent) 0, transparent 60%); z-index: -1; filter: blur(20px); }
+    .h1 { font-size: clamp(2.2rem, 4vw + 1rem, 4rem); font-weight: 300; letter-spacing: -.02em; margin: 0 0 .6rem; }
+    .sub { max-width: 720px; margin: 0 auto 1.2rem; color: var(--muted); font-size: 1.1rem; }
+    .meta { font-size: .95rem; color: var(--muted); }
 
-        header {
-            position: fixed;
-            top: 0;
-            width: 100%;
-            background: rgba(255, 248, 231, 0.95);
-            backdrop-filter: blur(10px);
-            z-index: 1000;
-            padding: 1rem 0;
-            border-bottom: 1px solid var(--gold);
-        }
+    /* SECTION WRAPPER */
+    .wrap { max-width: 1120px; margin: 0 auto; padding: 40px 20px; }
+    .section-title { text-align: center; font-weight: 300; font-size: clamp(1.6rem, 1.2rem + 2vw, 2.4rem); margin: 10px auto 28px; position: relative; }
+    .section-title::after { content: ""; display: block; width: 72px; height: 2px; background: var(--gold); margin: 12px auto 0; }
 
-        nav {
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 0 2rem;
-        }
+    /* PROJECTS GRID */
+    .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 18px; }
+    .card { position: relative; background: var(--card); border: 1px solid color-mix(in oklab, var(--gold) 20%, transparent); border-radius: 16px; padding: 18px; box-shadow: var(--shadow); transition: transform .25s ease, box-shadow .25s ease; overflow: hidden; }
+    .card:hover { transform: translateY(-4px); box-shadow: 0 18px 60px rgba(212,175,55,.25); }
+    .card h3 { margin: 2px 0 8px; font-weight: 500; }
+    .card p { margin: 0 0 14px; color: var(--muted); }
+    .chip { display: inline-flex; align-items: center; gap: .4rem; font-size: .8rem; padding: .25rem .6rem; border: 1px dashed var(--gold); border-radius: 999px; color: var(--ink); }
+    .link { display: inline-flex; align-items: center; gap: .45rem; text-decoration: none; font-weight: 500; color: var(--gold); }
+    .link:focus-visible { outline: 3px solid var(--ring); outline-offset: 3px; border-radius: 6px; }
 
-        .logo {
-            font-size: 1.5rem;
-            font-weight: 600;
-            color: var(--gold);
-            text-decoration: none;
-            display: flex;
-            align-items: center;
-            gap: 0.5rem;
-        }
+    /* ABOUT */
+    .about { background: linear-gradient(180deg, color-mix(in oklab, var(--gold) 8%, transparent), transparent 65%); border-top: 1px solid color-mix(in oklab, var(--gold) 18%, transparent); }
+    .about p { max-width: 820px; margin: 0 auto; color: var(--muted); font-size: 1.06rem; }
 
-        .logo::before {
-            content: '🌸🔑';
-            font-size: 1.2rem;
-        }
+    /* FOOTER */
+    footer { border-top: 1px solid color-mix(in oklab, var(--gold) 18%, transparent); padding: 36px 20px 60px; text-align: center; color: var(--muted); }
+    footer a { color: var(--gold); text-decoration: none; }
 
-        .nav-links {
-            display: flex;
-            list-style: none;
-            gap: 2rem;
-            margin-left: auto;
-        }
-
-        .nav-links a {
-            text-decoration: none;
-            color: var(--text-dark);
-            font-weight: 400;
-            transition: color 0.3s ease;
-        }
-
-        .nav-links a:hover {
-            color: var(--gold);
-        }
-
-        main {
-            margin-top: 80px;
-            min-height: 100vh;
-        }
-
-        .hero {
-            text-align: center;
-            padding: 4rem 2rem;
-            background: linear-gradient(135deg, var(--cream) 0%, #FDF6E3 100%);
-        }
-
-        .hero h1 {
-            font-size: 3rem;
-            font-weight: 300;
-            color: var(--text-dark);
-            margin-bottom: 1rem;
-            letter-spacing: -0.02em;
-        }
-
-        .hero p {
-            font-size: 1.2rem;
-            color: var(--text-light);
-            max-width: 600px;
-            margin: 0 auto;
-        }
-
-        .section {
-            padding: 4rem 2rem;
-            max-width: 1200px;
-            margin: 0 auto;
-        }
-
-        .section h2 {
-            font-size: 2.5rem;
-            font-weight: 300;
-            text-align: center;
-            margin-bottom: 3rem;
-            color: var(--text-dark);
-            position: relative;
-        }
-
-        .section h2::after {
-            content: '';
-            display: block;
-            width: 60px;
-            height: 2px;
-            background: var(--gold);
-            margin: 1rem auto 0;
-        }
-
-        .projects-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 2rem;
-        }
-
-        .project-card {
-            background: var(--white);
-            border-radius: 12px;
-            padding: 2rem;
-            box-shadow: var(--shadow);
-            transition: transform 0.3s ease, box-shadow 0.3s ease;
-            border: 1px solid rgba(212, 175, 55, 0.1);
-        }
-
-        .project-card:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 8px 30px rgba(212, 175, 55, 0.15);
-        }
-
-        .project-card h3 {
-            font-size: 1.5rem;
-            font-weight: 500;
-            margin-bottom: 0.5rem;
-            color: var(--text-dark);
-        }
-
-        .project-card p {
-            color: var(--text-light);
-            margin-bottom: 1rem;
-        }
-
-        .project-link {
-            display: inline-block;
-            color: var(--gold);
-            text-decoration: none;
-            font-weight: 500;
-            transition: color 0.3s ease;
-        }
-
-        .project-link:hover {
-            color: var(--dark-gold);
-        }
-
-        footer {
-            background: var(--text-dark);
-            color: var(--white);
-            text-align: center;
-            padding: 2rem;
-            margin-top: auto;
-        }
-
-        @media (max-width: 768px) {
-            .nav-links {
-                display: none;
-            }
-
-            .hero h1 {
-                font-size: 2rem;
-            }
-
-            .section {
-                padding: 2rem 1rem;
-            }
-        }
-    </style>
+    /* MOBILE */
+    .menu { display: none; }
+    @media (max-width: 800px) {
+      .links { display: none; }
+      .menu { display: inline-flex; }
+    }
+  </style>
 </head>
 <body>
-    <header>
-        <nav>
-            <a href="#" class="logo">Chrysanthemum Vault</a>
-            <ul class="nav-links">
-                <li><a href="#home">Home</a></li>
-                <li><a href="#projects">Projects</a></li>
-                <li><a href="#about">About</a></li>
-                <li><a href="#contact">Contact</a></li>
-            </ul>
-        </nav>
-    </header>
+  <header>
+    <nav class="nav" aria-label="Primary">
+      <a class="brand" href="#home">
+        <span class="mark" aria-hidden="true">🌸🔑</span>
+        <span class="word">Chrysanthemum Vault</span>
+      </a>
+      <div class="links" role="list">
+        <a href="#projects">Projects</a>
+        <a href="#about">About</a>
+        <a href="#contact">Contact</a>
+      </div>
+      <div class="actions">
+        <button id="themeToggle" class="btn" aria-pressed="false" aria-label="Toggle theme">Theme</button>
+        <button class="btn menu" id="openMenu" aria-haspopup="true" aria-expanded="false" aria-controls="sheet">Menu</button>
+      </div>
+    </nav>
+  </header>
 
-    <main>
-        <section id="home" class="hero">
-            <h1>Vault of the Chrysanthemum</h1>
-            <p>Discover elegant code repositories and innovative projects securely stored in this Art Nouveau-inspired vault. Built for GitHub enthusiasts seeking minimalist sophistication.</p>
-        </section>
+  <main id="home">
+    <section class="hero" aria-labelledby="title">
+      <h1 id="title" class="h1">Vault of the Chrysanthemum</h1>
+      <p class="sub">A quiet, deliberate space for elegant code, artifacts, and works-in-progress. Minimalist sophistication with a hint of Nouveau flourish.</p>
+      <div class="meta">Hosted on <strong>GitHub Pages</strong> • <span id="domain">chrysanthemumvault.com</span></div>
+    </section>
 
-        <section id="projects" class="section">
-            <h2>Featured Projects</h2>
-            <div class="projects-grid">
-                <div class="project-card">
-                    <h3>Project Alpha</h3>
-                    <p>A minimalist web app for task management with Art Deco influences.</p>
-                    <a href="https://github.com/yourusername/project-alpha" class="project-link" target="_blank">View on GitHub →</a>
-                </div>
-                <div class="project-card">
-                    <h3>Project Beta</h3>
-                    <p>Secure vault encryption tool inspired by flowing Nouveau designs.</p>
-                    <a href="https://github.com/yourusername/project-beta" class="project-link" target="_blank">View on GitHub →</a>
-                </div>
-                <div class="project-card">
-                    <h3>Project Gamma</h3>
-                    <p>Elegant data visualization library with sans-serif precision.</p>
-                    <a href="https://github.com/yourusername/project-gamma" class="project-link" target="_blank">View on GitHub →</a>
-                </div>
-            </div>
-        </section>
+    <section id="projects" class="wrap">
+      <h2 class="section-title">Featured Projects</h2>
+      <div class="grid" id="projectGrid">
+        <!-- Hand-curated examples. Replace yourusername with your GitHub handle. -->
+        <article class="card">
+          <span class="chip" aria-hidden="true">Web</span>
+          <h3>Project Alpha</h3>
+          <p>A minimalist web app for task management with restrained Art Deco lines.</p>
+          <a class="link" href="https://github.com/yourusername/project-alpha" target="_blank" rel="noopener">View on GitHub →</a>
+        </article>
+        <article class="card">
+          <span class="chip" aria-hidden="true">Security</span>
+          <h3>Project Beta</h3>
+          <p>Lightweight vault encryption tooling, inspired by flowing Nouveau motifs.</p>
+          <a class="link" href="https://github.com/yourusername/project-beta" target="_blank" rel="noopener">View on GitHub →</a>
+        </article>
+        <article class="card">
+          <span class="chip" aria-hidden="true">Data</span>
+          <h3>Project Gamma</h3>
+          <p>Elegant data-visual components with sans-serif precision.</p>
+          <a class="link" href="https://github.com/yourusername/project-gamma" target="_blank" rel="noopener">View on GitHub →</a>
+        </article>
+      </div>
+    </section>
 
-        <section id="about" class="section" style="background: rgba(212, 175, 55, 0.05);">
-            <h2>About the Vault</h2>
-            <p style="text-align: center; max-width: 800px; margin: 0 auto; font-size: 1.1rem; color: var(--text-light);">
-                Chrysanthemum Vault is a personal GitHub showcase domain, blending the organic elegance of Art Nouveau with the clean lines of Art Deco. Hosted under chrysanthemumvault.com, it serves as a secure, minimalist portal to curated repositories.
-            </p>
-        </section>
-    </main>
+    <section id="about" class="wrap about">
+      <h2 class="section-title">About the Vault</h2>
+      <p>
+        Chrysanthemum Vault is a personal domain and gallery that blends the organic curves of Art Nouveau with the disciplined geometry of Art Deco. It’s a calm portal to curated repositories, prototypes, and selected artworks. The interface avoids noise, favors clarity, and lets the work breathe.
+      </p>
+    </section>
+  </main>
 
-    <footer id="contact">
-        <p>&copy; 2025 Chrysanthemum Vault. All rights reserved. | <a href="mailto:contact@chrysanthemumvault.com" style="color: var(--gold);">contact@chrysanthemumvault.com</a></p>
-    </footer>
+  <footer id="contact">
+    <div class="wrap" style="text-align:center;">
+      <p>© <span id="year"></span> Chrysanthemum Vault • <a href="mailto:contact@chrysanthemumvault.com">contact@chrysanthemumvault.com</a></p>
+    </div>
+  </footer>
 
-    <script>
-        // Smooth scrolling for nav links
-        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-            anchor.addEventListener('click', function (e) {
-                e.preventDefault();
-                document.querySelector(this.getAttribute('href')).scrollIntoView({
-                    behavior: 'smooth'
-                });
-            });
-        });
-    </script>
+  <!-- Sheet (mobile menu) -->
+  <dialog id="sheet" style="border:none; border-radius:18px; padding:0; width:min(92vw,480px); background:var(--card); color:var(--ink);">
+    <div style="padding:18px 18px 6px; display:flex; justify-content:space-between; align-items:center; border-bottom:1px solid color-mix(in oklab, var(--gold) 22%, transparent)">
+      <strong>Navigate</strong>
+      <button class="btn" id="closeMenu">Close</button>
+    </div>
+    <div style="padding:14px 18px 22px; display:flex; flex-direction:column; gap:10px;">
+      <a class="link" href="#projects" onclick="sheet.close()">Projects</a>
+      <a class="link" href="#about" onclick="sheet.close()">About</a>
+      <a class="link" href="#contact" onclick="sheet.close()">Contact</a>
+    </div>
+  </dialog>
+
+  <script>
+    // Year & domain display
+    document.getElementById('year').textContent = new Date().getFullYear();
+
+    // Theme toggle (light/dark via data-theme attribute and system preference)
+    const btn = document.getElementById('themeToggle');
+    btn.addEventListener('click', () => {
+      const cur = document.documentElement.getAttribute('data-theme');
+      const next = cur === 'dark' ? 'light' : 'dark';
+      document.documentElement.setAttribute('data-theme', next);
+      btn.setAttribute('aria-pressed', String(next === 'dark'));
+    });
+
+    // Mobile menu
+    const openMenu = document.getElementById('openMenu');
+    const closeMenu = document.getElementById('closeMenu');
+    const sheet = document.getElementById('sheet');
+    openMenu?.addEventListener('click', () => { sheet.showModal(); openMenu.setAttribute('aria-expanded','true'); });
+    closeMenu?.addEventListener('click', () => { sheet.close(); openMenu.setAttribute('aria-expanded','false'); });
+
+    // Smooth scroll
+    document.querySelectorAll('a[href^="#"]').forEach(a => {
+      a.addEventListener('click', e => {
+        const id = a.getAttribute('href');
+        if (!id || id === '#') return; 
+        e.preventDefault();
+        document.querySelector(id)?.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      });
+    });
+
+    // OPTIONAL: Auto-populate from GitHub API (public repos only).
+    // Replace YOUR_GITHUB_USERNAME and (optionally) topic filter.
+    // To enable, set enableAuto = true.
+    const enableAuto = false; // set to true when ready
+    const GH_USER = 'yourusername';
+    const TOPIC = 'vault-featured'; // add this topic to repos you want featured
+
+    async function hydrateFromGitHub() {
+      const grid = document.getElementById('projectGrid');
+      grid.innerHTML = '';
+      try {
+        const res = await fetch(`https://api.github.com/users/${GH_USER}/repos?per_page=100`);
+        const data = await res.json();
+        const picks = data
+          .filter(r => !TOPIC || (r.topics && r.topics.includes(TOPIC)))
+          .sort((a,b) => new Date(b.pushed_at) - new Date(a.pushed_at))
+          .slice(0, 9);
+        for (const r of picks) {
+          const card = document.createElement('article');
+          card.className = 'card';
+          card.innerHTML = `
+            <span class="chip">${r.language || 'Repo'}</span>
+            <h3>${r.name.replace(/[-_]/g,' ')}</h3>
+            <p>${r.description || 'No description provided.'}</p>
+            <a class="link" href="${r.html_url}" target="_blank" rel="noopener">View on GitHub →</a>
+          `;
+          grid.appendChild(card);
+        }
+      } catch (e) {
+        console.warn('GitHub API unavailable', e);
+      }
+    }
+    if (enableAuto) hydrateFromGitHub();
+  </script>
 </body>
 </html>
